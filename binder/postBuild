@@ -13,3 +13,10 @@ c.ServerApp.tornado_settings = {
 }
 c.ServerApp.cookie_options = {"SameSite": "None", "Secure": True}
 PYEOF
+
+# Follow the user's OS light/dark preference (an embedding page cannot set
+# the theme cross-origin, but this keeps dark-mode users in a dark notebook).
+mkdir -p ~/.jupyter/lab/user-settings/@jupyterlab/apputils-extension
+cat > ~/.jupyter/lab/user-settings/@jupyterlab/apputils-extension/themes.jupyterlab-settings <<'JSONEOF'
+{ "adaptive-theme": true }
+JSONEOF

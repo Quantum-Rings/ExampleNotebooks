@@ -1,5 +1,6 @@
 #!/bin/bash
-# Allow the Open Quantum portal to embed the notebook server in an iframe.
+# Allow the Open Quantum and Quantum Rings portals to embed the notebook
+# server in an iframe.
 # frame-ancestors only affects embedding; direct (top-level) Binder use is
 # unchanged. SameSite=None lets the session cookies flow inside the iframe.
 set -euo pipefail
@@ -7,7 +8,7 @@ mkdir -p ~/.jupyter
 cat > ~/.jupyter/jupyter_server_config.py <<'PYEOF'
 c.ServerApp.tornado_settings = {
     "headers": {
-        "Content-Security-Policy": "frame-ancestors 'self' https://www.openquantum.com https://openquantum.com http://localhost:3000"
+        "Content-Security-Policy": "frame-ancestors 'self' https://www.openquantum.com https://openquantum.com https://www.quantumrings.com https://quantumrings.com http://localhost:3000"
     }
 }
 c.ServerApp.cookie_options = {"SameSite": "None", "Secure": True}

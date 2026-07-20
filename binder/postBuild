@@ -8,7 +8,7 @@ mkdir -p ~/.jupyter
 cat > ~/.jupyter/jupyter_server_config.py <<'PYEOF'
 c.ServerApp.tornado_settings = {
     "headers": {
-        "Content-Security-Policy": "frame-ancestors 'self' https://www.openquantum.com https://openquantum.com https://www.quantumrings.com https://quantumrings.com http://localhost:3000"
+        "Content-Security-Policy": "frame-ancestors 'self' https://*.openquantum.com https://openquantum.com https://*.quantumrings.com https://quantumrings.com http://localhost:*"
     }
 }
 c.ServerApp.cookie_options = {"SameSite": "None", "Secure": True}

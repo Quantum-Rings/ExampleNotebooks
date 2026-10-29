@@ -1,0 +1,22 @@
+#!/bin/bash
+# Allow the Open Quantum and Quantum Rings portals to embed the notebook
+# server in an iframe.
+# frame-ancestors only affects embedding; direct (top-level) Binder use is
+# unchanged. SameSite=None lets the session cookies flow inside the iframe.
+set -euo pipefail
+mkdir -p ~/.jupyter
+cat > ~/.jupyter/jupyter_server_config.py <<'PYEOF'
+c.ServerApp.tornado_settings = {
+    "headers": {
+        "Content-Security-Policy": "frame-ancestors 'self' https://*.openquantum.com https://openquantum.com https://*.quantumrings.com https://quantumrings.com http://localhost:*"
+    }
+}
+c.ServerApp.cookie_options = {"SameSite": "None", "Secure": True}
+PYEOF
+
+# Follow the user's OS light/dark preference (an embedding page cannot set
+# the theme cross-origin, but this keeps dark-mode users in a dark notebook).
+mkdir -p ~/.jupyter/lab/user-settings/@jupyterlab/apputils-extension
+cat > ~/.jupyter/lab/user-settings/@jupyterlab/apputils-extension/themes.jupyterlab-settings <<'JSONEOF'
+{ "adaptive-theme": true }
+JSONEOF

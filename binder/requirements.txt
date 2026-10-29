@@ -1,0 +1,26 @@
+# Environment for Binder launches (mybinder.org builds the repo image from
+# this file). The OpenQuantum/ notebooks also install their own dependencies
+# in their first cell; the rest covers the Qiskit and Quantum Rings SDK
+# example folders.
+openquantum-sdk
+openquantum-sdk-qiskit
+openquantum-sdk-pennylane
+qbraid
+QuantumRingsLib
+quantumrings-toolkit-qiskit
+qiskit
+qiskit-aer
+qiskit-algorithms
+qiskit-finance
+qiskit-nature
+qiskit-optimization
+qiskit-ibm-runtime
+pennylane
+matplotlib
+pylatexenc
+networkx
+scipy
+docplex
+cplex
+colorama
+pyodide-http
